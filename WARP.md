@@ -20,7 +20,7 @@ hindi-bpe-tokenizer/
 │   ├── tokenizer.py         # HindiTokenizer class (main API)
 │   ├── bpe.py              # Core BPE algorithm functions
 │   └── grapheme.py         # Hindi grapheme extraction
-├── examples/                # Usage examples
+├── src/                # Usage examples
 │   ├── basic_usage.py      # Simple demo
 │   └── advanced_training.py # Training analysis
 ├── tests/                   # Test directory
@@ -33,10 +33,10 @@ hindi-bpe-tokenizer/
 
 ```bash
 # Basic usage demonstration
-python examples/basic_usage.py
+python src/basic_usage.py
 
 # Advanced training with compression analysis
-python examples/advanced_training.py
+python src/advanced_training.py
 ```
 
 ### Using the Package
