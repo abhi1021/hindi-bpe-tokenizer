@@ -65,6 +65,7 @@ hindi-bpe-tokenizer/
 │   └── advanced_training.py    # Training with larger corpus
 ├── tests/                      # Test directory
 ├── hindi_tokenization.py       # Original monolithic implementation
+├── upload_to_huggingface.py    # Util file for Hugging Face usage
 ├── README.md
 └── WARP.md                     # Guidance for Warp AI
 ```
