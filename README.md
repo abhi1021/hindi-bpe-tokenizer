@@ -151,12 +151,15 @@ Real-world compression results from training on a 60KB Hindi corpus:
 *Sample text: "इन ट्रेंड्स को जल्दी पहचानने से ट्रेडर्स को मदद मिलती है" (148 UTF-8 bytes)*
 
 ### Training Corpus Compression (4000 merges)
+ 
+| Stat                     | Value  |
+|--------------------------|--------| 
+| **UTF-8 bytes**          | 60,565 |
+| **Raw graphemes**        | 17,179 | 
+| **Compressed tokens**    | 3,253  |
+| **Grapheme compression** | 5.28x  | 
+| **Byte compression**     | 18.62x |    
 
-- **UTF-8 bytes**: 60,565
-- **Raw graphemes**: 17,179
-- **Compressed tokens**: 3,253
-- **Grapheme compression**: 5.28x
-- **Byte compression**: 18.62x
 
 Higher merge counts increase vocabulary size but significantly improve compression. The tokenizer achieves excellent compression ratios while maintaining perfect reversibility (encoding → decoding preserves original text).
 
@@ -164,7 +167,9 @@ Higher merge counts increase vocabulary size but significantly improve compressi
 
 MIT
 
-## Uploading to HuggingFace Hub
+## HuggingFace Integration
+
+### Upload Tokenizer to HuggingFace Hub
 
 To share your trained tokenizer on HuggingFace Hub:
 
@@ -187,6 +192,26 @@ This will:
 - Generate vocabulary and merge files
 - Create a model card with statistics
 - Upload everything to HuggingFace Hub
+
+### Deploy Interactive Demo to HuggingFace Spaces
+
+Deploy a Gradio-based web demo:
+
+```bash
+# 1. Train and save tokenizer locally
+python upload_to_huggingface.py --repo-name agileabhi/hindi-bpe-tokenizer --no-upload
+
+# 2. Follow deployment guide
+See DEPLOY_TO_SPACES.md for detailed instructions
+```
+
+**Live Demo**: [Coming Soon]
+
+Features:
+- Interactive tokenization with visual token breakdown
+- Grapheme cluster visualization
+- Real-time compression statistics
+- Bidirectional encoding/decoding
 
 ## Contributing
 
