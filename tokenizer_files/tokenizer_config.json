@@ -1,0 +1,9 @@
+{
+  "tokenizer_class": "HindiTokenizer",
+  "model_type": "BPE",
+  "num_merges": 4000,
+  "vocab_size": 4629,
+  "grapheme_based": true,
+  "language": "hindi",
+  "script": "devanagari"
+}

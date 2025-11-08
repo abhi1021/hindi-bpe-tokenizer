@@ -136,15 +136,56 @@ Main tokenizer class with the following methods:
 
 ## Performance
 
-Typical compression ratios with 2000 merges:
-- **Grapheme compression**: 2-3x
-- **Byte compression**: 2-4x
+Real-world compression results from training on a 60KB Hindi corpus:
 
-Higher merge counts increase vocabulary size but improve compression.
+### Compression by Merge Count
+
+| Merges | Vocab Size | Tokens (sample) | Byte Compression |
+|--------|------------|-----------------|------------------|
+| 100    | 729        | 23              | 6.43x            |
+| 500    | 1,129      | 15              | 9.87x            |
+| 1000   | 1,629      | 12              | 12.33x           |
+| 2000   | 2,629      | 9               | 16.44x           |
+
+*Sample text: "इन ट्रेंड्स को जल्दी पहचानने से ट्रेडर्स को मदद मिलती है" (148 UTF-8 bytes)*
+
+### Training Corpus Compression (4000 merges)
+
+- **UTF-8 bytes**: 60,565
+- **Raw graphemes**: 17,179
+- **Compressed tokens**: 3,253
+- **Grapheme compression**: 5.28x
+- **Byte compression**: 18.62x
+
+Higher merge counts increase vocabulary size but significantly improve compression. The tokenizer achieves excellent compression ratios while maintaining perfect reversibility (encoding → decoding preserves original text).
 
 ## License
 
-[Specify your license]
+MIT
+
+## Uploading to HuggingFace Hub
+
+To share your trained tokenizer on HuggingFace Hub:
+
+```bash
+# Install huggingface-hub
+pip install huggingface-hub
+
+# Login to HuggingFace (one-time setup)
+huggingface-cli login
+
+# Upload tokenizer
+python upload_to_huggingface.py --repo-name agileabhi/hindi-bpe-tokenizer --num-merges 4000
+
+# Or save locally without uploading
+python upload_to_huggingface.py --repo-name agileabhi/hindi-bpe-tokenizer --no-upload
+```
+
+This will:
+- Train the tokenizer on your corpus
+- Generate vocabulary and merge files
+- Create a model card with statistics
+- Upload everything to HuggingFace Hub
 
 ## Contributing
 

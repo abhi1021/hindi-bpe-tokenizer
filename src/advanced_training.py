@@ -19,10 +19,6 @@ from hindi_tokenizer import HindiTokenizer
 with open('content.txt', 'r', encoding='utf-8') as f:
     TRAINING_CORPUS = f.read()
 
-# Large training corpus from the original file
-TRAINING_CORPUS = """
-"""
-
 
 def main():
     print("=" * 70)
@@ -60,7 +56,7 @@ def main():
     print("=" * 70)
     
     tokenizer = HindiTokenizer()
-    tokenizer.train(TRAINING_CORPUS, num_merges=2000)
+    tokenizer.train(TRAINING_CORPUS, num_merges=4000)
     
     # Encode and decode
     encoded = tokenizer.encode(test_text)
